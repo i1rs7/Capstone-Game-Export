@@ -1,0 +1,76 @@
+ea4bc82a6ad023ab7ee23ee620429895
+::res://::1744603986
+export_presets.cfg::TextFile::-1::1744602991::0::1::::<><>::
+icon.svg::CompressedTexture2D::1273672514198752144::1744164426::1744603988::1::::<><>::
+index.apple-touch-icon.png::CompressedTexture2D::3851029499645395516::1744602990::1744603988::1::::<><>::
+index.icon.png::CompressedTexture2D::1381424914219816128::1744602990::1744603988::1::::<><>::
+index.png::CompressedTexture2D::6896711260572390320::1744602990::1744603988::1::::<><>::
+::res://Assets/::1744512896
+::res://Assets/Fonts/::1744489983
+BLKCHCRY.TTF::FontFile::8581359174843254461::1744488148::1744603987::1::::<><>::
+Ghastly Panic.ttf::FontFile::7441641734339372086::1744227228::1744603987::1::::<><>::
+Minecraft.ttf::FontFile::155813067867460106::1744227228::1744603987::1::::<><>::
+::res://Assets/Sounds/::1744601389
+02_Heal_02.wav::AudioStreamWAV::8739404263735490141::1744484903::1744603988::1::::<><>::
+backgroundMusic.mp3::AudioStreamMP3::4967246867525951464::1744227228::1744603988::1::::<><>::
+cutscene2scream.mp3::AudioStreamMP3::6553762033037646016::1744601360::1744603988::1::::<><>::
+cutscenewalk.mp3::AudioStreamMP3::613155598439309890::1744601360::1744603988::1::::<><>::
+flickeringlight.mp3::AudioStreamMP3::7734494881308070569::1744497680::1744603988::1::::<><>::
+hitEnemy.mp3::AudioStreamMP3::173957664236438049::1744227228::1744603988::1::::<><>::
+Lonely Horizon.mp3::AudioStreamMP3::1307950458605856129::1744227228::1744603988::1::::<><>::
+menu.mp3::AudioStreamMP3::3575424224100241172::1744227228::1744603988::1::::<><>::
+oilRefill.mp3::AudioStreamMP3::4134158635754475434::1744227228::1744603987::1::::<><>::
+playerHit.mp3::AudioStreamMP3::455024794425340381::1744227228::1744603987::1::::<><>::
+playerscream.mp3::AudioStreamMP3::4589644546246295860::1744601360::1744603987::1::::<><>::
+rain-sound-307165.mp3::AudioStreamMP3::4960897016283284607::1744601360::1744603988::1::::<><>::
+start_game.mp3::AudioStreamMP3::6913373426988275338::1744488148::1744603987::1::::<><>::
+walking-sound-effect-272246.mp3::AudioStreamMP3::5737276662158128853::1744601360::1744603987::1::::<><>::
+zombie-scream-324752 (mp3cut.net).mp3::AudioStreamMP3::1727793024521912714::1744601360::1744603987::1::::<><>::
+::res://Assets/Sprites/::1744599726
+circle.png::CompressedTexture2D::4270903564954085890::1744227229::1744603988::1::::<><>::
+cutscenebg.JPG::CompressedTexture2D::7353106398979030742::1744515661::1744603988::1::::<><>::
+cutscene_fall.png::CompressedTexture2D::1827876038276066275::1744512998::1744603988::1::::<><>::
+cutscene_walk.png::CompressedTexture2D::4190379671720150022::1744512834::1744603988::1::::<><>::
+Dungeon_brick_wall_grey.png.png::CompressedTexture2D::3000823509155398853::1744227229::1744603988::1::::<><>::
+endsceneEnemy.png::CompressedTexture2D::4797893420681942277::1744523834::1744603988::1::::<><>::
+Enemies.png::CompressedTexture2D::3113397471927132015::1744227229::1744603988::1::::<><>::
+gradient.png::CompressedTexture2D::1682019708374419933::1744227775::1744603988::1::::<><>::
+health_progress.png::CompressedTexture2D::4787809455089017308::1744227229::1744603988::1::::<><>::
+heart.png::CompressedTexture2D::2948814953694595232::1744227229::1744603988::1::::<><>::
+idle sheet-Sheet.png::CompressedTexture2D::4387601758086623294::1744227229::1744603988::1::::<><>::
+itch jump sheet-Sheet.png::CompressedTexture2D::6016724538865470278::1744227229::1744603988::1::::<><>::
+itch run-Sheet sheet.png::CompressedTexture2D::4326682357930384387::1744227229::1744603988::1::::<><>::
+oil_bottle.png::CompressedTexture2D::6669953358050989897::1744227229::1744603988::1::::<><>::
+oil_progress.png::CompressedTexture2D::8970575425548480438::1744227229::1744603988::1::::<><>::
+player.png::CompressedTexture2D::3343707747164549498::1744227229::1744603988::1::::<><>::
+pulsegradient.png::CompressedTexture2D::1082345766965123970::1744227229::1744603988::1::::<><>::
+titlescreen.png::CompressedTexture2D::7146394452951715580::1744489845::1744603988::1::::<><>::
+white.png::CompressedTexture2D::3729653686825740214::1744519031::1744603988::1::::<><>::
+::res://Scenes/::1744602981
+bg_music.tscn::PackedScene::5544277956818395628::1744523412::0::1::::<><>::uid://cc1f3hxtf12q3::::res://Assets/Sounds/backgroundMusic.mp3
+die_screen.tscn::PackedScene::4502145738399754405::1744602981::0::1::::<><>::res://Scripts/die_screen.gd<>uid://dea10tpur6v55::::res://Assets/Fonts/Ghastly Panic.ttf<>uid://chqhosqiiwk5::::res://Assets/Fonts/Minecraft.ttf<>uid://c5q5irligprqo::::res://Assets/Sounds/start_game.mp3
+enemy.tscn::PackedScene::5252573248812791006::1744602981::0::1::::<><>::res://Scripts/enemy.gd<>uid://bkmfg36l1lrxf::::res://Assets/Sprites/Enemies.png
+heart.tscn::PackedScene::754550217783072578::1744488148::0::1::::<><>::uid://pokcuuvd2sxe::::res://Assets/Sprites/pulsegradient.png<>res://Scripts/heart.gd<>uid://biaos0qt8fum7::::res://Assets/Sprites/heart.png<>uid://dwroygmd0n1xp::::res://Assets/Sounds/02_Heal_02.wav
+intro_cutscene.tscn::PackedScene::3601623311126313754::1744602981::0::1::::<><>::uid://bi0veih7vkgj2::::res://Assets/Sprites/Dungeon_brick_wall_grey.png.png<>res://Scripts/intro_cutscene.gd<>uid://1bo37djk5pm6::::res://Assets/Sprites/cutscene_fall.png<>uid://dc05t83imj04q::::res://Assets/Sprites/cutscenebg.JPG<>uid://b0x36806s34k5::::res://Assets/Sprites/cutscene_walk.png<>uid://b134fmlltmnew::::res://Assets/Sprites/circle.png<>uid://d02ocjbjgift3::::res://Assets/Sprites/oil_progress.png<>uid://btew37d8643ao::::res://Assets/Sprites/white.png<>uid://b6ni1mbmnd32g::::res://Assets/Sounds/playerscream.mp3<>uid://ccxdip6eulmst::::res://Assets/Sounds/rain-sound-307165.mp3
+intro_cutscene_2.tscn::PackedScene::4717316270594302607::1744602981::0::1::::<><>::res://Scripts/intro_cutscene_2.gd<>uid://chqhosqiiwk5::::res://Assets/Fonts/Minecraft.ttf<>uid://digwaa1nc1pgr::::res://Assets/Sounds/flickeringlight.mp3<>uid://c2a8fl4dk6yfh::::res://Assets/Sprites/oil_bottle.png<>uid://yu7q7qeik4re::::res://Assets/Sounds/zombie-scream-324752 (mp3cut.net).mp3
+level.tscn::PackedScene::6010488666132145999::1744602981::0::1::::<><>::res://Scripts/level.gd<>uid://c6u6lt7xce26a::::res://Scenes/player.tscn<>uid://bi0veih7vkgj2::::res://Assets/Sprites/Dungeon_brick_wall_grey.png.png<>uid://l3sbtgxku847::::res://Scenes/ui.tscn<>uid://cc1f3hxtf12q3::::res://Assets/Sounds/backgroundMusic.mp3<>res://Scripts/WaveManager.gd
+menu_music.tscn::PackedScene::6656142813283495341::1744227229::0::1::::<><>::uid://bq67ykco56ir1::::res://menu.mp3
+oil.tscn::PackedScene::5566532411752196187::1744484903::0::1::::<><>::uid://c2a8fl4dk6yfh::::res://Assets/Sprites/oil_bottle.png<>res://Scripts/oil.gd<>uid://by5u8u7016rmw::::res://Assets/Sounds/oilRefill.mp3<>uid://pokcuuvd2sxe::::res://Assets/Sprites/pulsegradient.png
+player.tscn::PackedScene::6991885994180386730::1744602981::0::1::::<><>::res://Scripts/player.gd<>uid://bnvym4b241x4e::::res://Assets/Sprites/player.png<>uid://b134fmlltmnew::::res://Assets/Sprites/circle.png<>uid://gqogr222nilp::::res://Assets/Sounds/playerHit.mp3<>uid://x71vbnkthdsf::::res://Assets/Sprites/gradient.png
+pulse.tscn::PackedScene::8755437877908640897::1744227775::0::1::::<><>::res://Scripts/pulse.gd<>uid://pokcuuvd2sxe::::res://Assets/Sprites/pulsegradient.png
+start.tscn::PackedScene::1382828576594376365::1744602981::0::1::::<><>::res://Scripts/start.gd<>uid://c821cp4ch702s::::res://Assets/Sprites/titlescreen.png<>uid://c5q5irligprqo::::res://Assets/Sounds/start_game.mp3<>uid://digwaa1nc1pgr::::res://Assets/Sounds/flickeringlight.mp3<>uid://chqhosqiiwk5::::res://Assets/Fonts/Minecraft.ttf<>uid://svt0uokumnk0::::res://Assets/Sounds/Lonely Horizon.mp3
+ui.tscn::PackedScene::830975557067413790::1744602981::0::1::::<><>::res://Scripts/ui.gd<>uid://se8g2ptfsvym::::res://icon.svg<>uid://chqhosqiiwk5::::res://Assets/Fonts/Minecraft.ttf<>uid://d02ocjbjgift3::::res://Assets/Sprites/oil_progress.png<>uid://biaos0qt8fum7::::res://Assets/Sprites/heart.png<>uid://cahir0xigdglw::::res://Assets/Sprites/health_progress.png<>uid://dui4y5a6nm4m8::::res://Assets/Fonts/BLKCHCRY.TTF
+::res://Scripts/::1744602935
+die_screen.gd::GDScript::-1::1744585453::0::1::::<>Control<>::
+enemy.gd::GDScript::-1::1744488148::0::1::::<>CharacterBody2D<>::
+GameManager.gd::GDScript::-1::1744488146::0::1::::<>Node<>::
+heart.gd::GDScript::-1::1744484903::0::1::::<>Node2D<>::
+intro_cutscene.gd::GDScript::-1::1744602935::0::1::::<>Control<>::
+intro_cutscene_2.gd::GDScript::-1::1744601634::0::1::::<>Control<>::
+level.gd::GDScript::-1::1744585453::0::1::::<>Node2D<>::
+oil.gd::GDScript::-1::1744227775::0::1::::<>Node2D<>::
+player.gd::GDScript::-1::1744484903::0::1::::<>CharacterBody2D<>::
+pulse.gd::GDScript::-1::1744227775::0::1::::<>Area2D<>::
+start.gd::GDScript::-1::1744585453::0::1::::<>Control<>::
+ui.gd::GDScript::-1::1744488148::0::1::::<>CanvasLayer<>::
+WaveManager.gd::GDScript::-1::1744601360::0::1::::<>Node<>::
