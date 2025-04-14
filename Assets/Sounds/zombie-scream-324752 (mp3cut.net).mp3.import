@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://yu7q7qeik4re"
+path="res://.godot/imported/zombie-scream-324752 (mp3cut.net).mp3-541d794ec2f0dfba3b72023536d2a44a.mp3str"
+
+[deps]
+
+source_file="res://Assets/Sounds/zombie-scream-324752 (mp3cut.net).mp3"
+dest_files=["res://.godot/imported/zombie-scream-324752 (mp3cut.net).mp3-541d794ec2f0dfba3b72023536d2a44a.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

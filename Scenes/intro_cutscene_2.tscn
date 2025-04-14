@@ -1,0 +1,99 @@
+[gd_scene load_steps=6 format=3 uid="uid://b8hdrlj6sj45x"]
+
+[ext_resource type="Script" path="res://Scripts/intro_cutscene_2.gd" id="1_7u7v0"]
+[ext_resource type="FontFile" uid="uid://chqhosqiiwk5" path="res://Assets/Fonts/Minecraft.ttf" id="1_n7shl"]
+[ext_resource type="AudioStream" uid="uid://digwaa1nc1pgr" path="res://Assets/Sounds/flickeringlight.mp3" id="3_52j4v"]
+[ext_resource type="Texture2D" uid="uid://c2a8fl4dk6yfh" path="res://Assets/Sprites/oil_bottle.png" id="3_opi48"]
+[ext_resource type="AudioStream" uid="uid://yu7q7qeik4re" path="res://Assets/Sounds/zombie-scream-324752 (mp3cut.net).mp3" id="5_5rkuv"]
+
+[node name="IntroCutscene2" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_7u7v0")
+
+[node name="FALLEN" type="Node2D" parent="."]
+position = Vector2(0, 100)
+
+[node name="F" type="Label" parent="FALLEN"]
+self_modulate = Color(0.66504, 0.90298, 0.636726, 1)
+offset_left = 255.0
+offset_top = 124.0
+offset_right = 418.0
+offset_bottom = 275.0
+theme_override_fonts/font = ExtResource("1_n7shl")
+theme_override_font_sizes/font_size = 150
+text = "f"
+horizontal_alignment = 1
+
+[node name="A" type="Label" parent="FALLEN"]
+self_modulate = Color(0.488606, 0.748422, 0.459578, 1)
+offset_left = 353.0
+offset_top = 130.0
+offset_right = 516.0
+offset_bottom = 281.0
+theme_override_fonts/font = ExtResource("1_n7shl")
+theme_override_font_sizes/font_size = 150
+text = "a"
+horizontal_alignment = 1
+
+[node name="L" type="Label" parent="FALLEN"]
+self_modulate = Color(0.366129, 0.58869, 0.341755, 1)
+offset_left = 444.0
+offset_top = 129.0
+offset_right = 607.0
+offset_bottom = 280.0
+theme_override_fonts/font = ExtResource("1_n7shl")
+theme_override_font_sizes/font_size = 150
+text = "l"
+horizontal_alignment = 1
+
+[node name="L2" type="Label" parent="FALLEN"]
+self_modulate = Color(0.270668, 0.449176, 0.251266, 1)
+offset_left = 507.0
+offset_top = 131.0
+offset_right = 670.0
+offset_bottom = 282.0
+theme_override_fonts/font = ExtResource("1_n7shl")
+theme_override_font_sizes/font_size = 150
+text = "l"
+horizontal_alignment = 1
+
+[node name="E" type="Label" parent="FALLEN"]
+self_modulate = Color(0.235955, 0.396718, 0.21851, 1)
+offset_left = 594.0
+offset_top = 131.0
+offset_right = 756.0
+offset_bottom = 282.0
+theme_override_fonts/font = ExtResource("1_n7shl")
+theme_override_font_sizes/font_size = 150
+text = "e"
+horizontal_alignment = 1
+
+[node name="N" type="Label" parent="FALLEN"]
+self_modulate = Color(0.168953, 0.293993, 0.155414, 1)
+offset_left = 714.0
+offset_top = 133.0
+offset_right = 877.0
+offset_bottom = 284.0
+theme_override_fonts/font = ExtResource("1_n7shl")
+theme_override_font_sizes/font_size = 150
+text = "n"
+horizontal_alignment = 1
+
+[node name="Oil" type="Sprite2D" parent="FALLEN"]
+position = Vector2(139, 336)
+scale = Vector2(7.9375, 8.46875)
+texture = ExtResource("3_opi48")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_52j4v")
+volume_db = 10.0
+
+[node name="Zombie" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_5rkuv")
+volume_db = -5.0
+autoplay = true

@@ -1,0 +1,186 @@
+[gd_scene load_steps=10 format=3 uid="uid://tx38qhu2bbm0"]
+
+[ext_resource type="Script" path="res://Scripts/start.gd" id="1_7ud7n"]
+[ext_resource type="Texture2D" uid="uid://c821cp4ch702s" path="res://Assets/Sprites/titlescreen.png" id="2_bv0nv"]
+[ext_resource type="AudioStream" uid="uid://c5q5irligprqo" path="res://Assets/Sounds/start_game.mp3" id="3_o08ni"]
+[ext_resource type="AudioStream" uid="uid://digwaa1nc1pgr" path="res://Assets/Sounds/flickeringlight.mp3" id="5_1o0ac"]
+[ext_resource type="FontFile" uid="uid://chqhosqiiwk5" path="res://Assets/Fonts/Minecraft.ttf" id="5_vcoum"]
+[ext_resource type="AudioStream" uid="uid://svt0uokumnk0" path="res://Assets/Sounds/Lonely Horizon.mp3" id="6_v43rd"]
+
+[sub_resource type="Animation" id="Animation_ahjdo"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_uc1mw"]
+resource_name = "flicker"
+length = 3.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.366667, 0.733333, 1.3, 1.7, 2.26667, 2.63333, 3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0.481), Color(1, 1, 1, 0.757), Color(1, 1, 1, 0.93), Color(1, 1, 1, 0.703), Color(1, 1, 1, 0.449), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_fpgg5"]
+_data = {
+"RESET": SubResource("Animation_ahjdo"),
+"flicker": SubResource("Animation_uc1mw")
+}
+
+[node name="Start" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_7ud7n")
+
+[node name="Bg" type="Sprite2D" parent="."]
+position = Vector2(567.5, 326.5)
+scale = Vector2(1.04948, 1.0571)
+texture = ExtResource("2_bv0nv")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("")
+libraries = {
+"": SubResource("AnimationLibrary_fpgg5")
+}
+speed_scale = 0.5
+
+[node name="StartSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_o08ni")
+volume_db = 10.0
+
+[node name="StartButton" type="Button" parent="."]
+modulate = Color(0.907139, 0.885448, 0.799692, 1)
+self_modulate = Color(0.949241, 0.94426, 0, 1)
+layout_mode = 0
+offset_left = 388.0
+offset_top = 487.0
+offset_right = 757.0
+offset_bottom = 598.0
+theme_override_fonts/font = ExtResource("5_vcoum")
+theme_override_font_sizes/font_size = 50
+action_mode = 0
+keep_pressed_outside = true
+text = "START"
+icon_alignment = 1
+
+[node name="Node2D" type="Node2D" parent="."]
+position = Vector2(0, 75)
+
+[node name="F" type="Label" parent="Node2D"]
+self_modulate = Color(0.66504, 0.90298, 0.636726, 1)
+offset_left = 255.0
+offset_top = 124.0
+offset_right = 418.0
+offset_bottom = 275.0
+theme_override_fonts/font = ExtResource("5_vcoum")
+theme_override_font_sizes/font_size = 150
+text = "f"
+horizontal_alignment = 1
+
+[node name="A" type="Label" parent="Node2D"]
+self_modulate = Color(0.488606, 0.748422, 0.459578, 1)
+offset_left = 353.0
+offset_top = 130.0
+offset_right = 516.0
+offset_bottom = 281.0
+theme_override_fonts/font = ExtResource("5_vcoum")
+theme_override_font_sizes/font_size = 150
+text = "a"
+horizontal_alignment = 1
+
+[node name="L" type="Label" parent="Node2D"]
+self_modulate = Color(0.366129, 0.58869, 0.341755, 1)
+offset_left = 444.0
+offset_top = 129.0
+offset_right = 607.0
+offset_bottom = 280.0
+theme_override_fonts/font = ExtResource("5_vcoum")
+theme_override_font_sizes/font_size = 150
+text = "l"
+horizontal_alignment = 1
+
+[node name="L2" type="Label" parent="Node2D"]
+self_modulate = Color(0.270668, 0.449176, 0.251266, 1)
+offset_left = 507.0
+offset_top = 131.0
+offset_right = 670.0
+offset_bottom = 282.0
+theme_override_fonts/font = ExtResource("5_vcoum")
+theme_override_font_sizes/font_size = 150
+text = "l"
+horizontal_alignment = 1
+
+[node name="E" type="Label" parent="Node2D"]
+self_modulate = Color(0.235955, 0.396718, 0.21851, 1)
+offset_left = 594.0
+offset_top = 131.0
+offset_right = 756.0
+offset_bottom = 282.0
+theme_override_fonts/font = ExtResource("5_vcoum")
+theme_override_font_sizes/font_size = 150
+text = "e"
+horizontal_alignment = 1
+
+[node name="N" type="Label" parent="Node2D"]
+self_modulate = Color(0.168953, 0.293993, 0.155414, 1)
+offset_left = 714.0
+offset_top = 133.0
+offset_right = 877.0
+offset_bottom = 284.0
+theme_override_fonts/font = ExtResource("5_vcoum")
+theme_override_font_sizes/font_size = 150
+text = "n"
+horizontal_alignment = 1
+
+[node name="credit" type="Label" parent="."]
+self_modulate = Color(0.666667, 0.901961, 0.635294, 1)
+layout_mode = 0
+offset_left = 208.0
+offset_top = 382.0
+offset_right = 955.0
+offset_bottom = 537.0
+theme_override_fonts/font = ExtResource("5_vcoum")
+theme_override_font_sizes/font_size = 50
+text = "by Magnus, Ansheng, 
+and Iris"
+horizontal_alignment = 1
+
+[node name="tagline" type="Label" parent="."]
+self_modulate = Color(0.81021, 0.787023, 0.0942396, 1)
+layout_mode = 0
+offset_left = 201.0
+offset_top = 78.0
+offset_right = 951.0
+offset_bottom = 233.0
+theme_override_fonts/font = ExtResource("5_vcoum")
+theme_override_font_sizes/font_size = 75
+text = "scared of the dark?"
+horizontal_alignment = 1
+
+[node name="FlickeringLight" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_1o0ac")
+volume_db = 10.0
+
+[node name="BgMusic" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_v43rd")
+autoplay = true
+
+[connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]

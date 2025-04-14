@@ -1,0 +1,32 @@
+[gd_scene load_steps=6 format=3 uid="uid://clkp8fyws0hxj"]
+
+[ext_resource type="Texture2D" uid="uid://c2a8fl4dk6yfh" path="res://Assets/Sprites/oil_bottle.png" id="1_6ropb"]
+[ext_resource type="Script" path="res://Scripts/oil.gd" id="1_qdpxf"]
+[ext_resource type="AudioStream" uid="uid://by5u8u7016rmw" path="res://Assets/Sounds/oilRefill.mp3" id="1_ragfu"]
+[ext_resource type="Texture2D" uid="uid://pokcuuvd2sxe" path="res://Assets/Sprites/pulsegradient.png" id="2_unw03"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_dpcby"]
+radius = 75.0
+
+[node name="Oil" type="Node2D"]
+script = ExtResource("1_qdpxf")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+scale = Vector2(2, 2)
+texture = ExtResource("2_unw03")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(2.5, 2.5)
+texture = ExtResource("1_6ropb")
+
+[node name="OilSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("1_ragfu")
+max_polyphony = 5
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_dpcby")
+
+[connection signal="finished" from="OilSound" to="." method="_on_oil_sound_finished"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

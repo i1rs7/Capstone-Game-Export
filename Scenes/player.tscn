@@ -1,0 +1,179 @@
+[gd_scene load_steps=15 format=3 uid="uid://c6u6lt7xce26a"]
+
+[ext_resource type="Script" path="res://Scripts/player.gd" id="1_t0qeu"]
+[ext_resource type="Texture2D" uid="uid://bnvym4b241x4e" path="res://Assets/Sprites/player.png" id="2_xx4bp"]
+[ext_resource type="Texture2D" uid="uid://b134fmlltmnew" path="res://Assets/Sprites/circle.png" id="3_f88wp"]
+[ext_resource type="AudioStream" uid="uid://gqogr222nilp" path="res://Assets/Sounds/playerHit.mp3" id="4_cudna"]
+[ext_resource type="Texture2D" uid="uid://x71vbnkthdsf" path="res://Assets/Sprites/gradient.png" id="5_7nsk8"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_35h2m"]
+atlas = ExtResource("2_xx4bp")
+region = Rect2(47, 0, 238, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_23jmn"]
+atlas = ExtResource("2_xx4bp")
+region = Rect2(285, 500, 238, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tusfm"]
+atlas = ExtResource("2_xx4bp")
+region = Rect2(285, 0, 238, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0o1iy"]
+atlas = ExtResource("2_xx4bp")
+region = Rect2(47, 500, 238, 500)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_avoh7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_35h2m")
+}],
+"loop": true,
+"name": &"down",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_23jmn")
+}],
+"loop": true,
+"name": &"left",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tusfm")
+}],
+"loop": true,
+"name": &"right",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0o1iy")
+}],
+"loop": true,
+"name": &"up",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_xh18n"]
+radius = 83.0241
+
+[sub_resource type="Animation" id="Animation_kkajj"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PointLight2D:energy")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [3.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PointLight2D:enabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_0p5ra"]
+resource_name = "flame_out"
+length = 0.7
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PointLight2D:energy")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [3.0, 0.0, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PointLight2D:enabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, false, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_t6b4l"]
+_data = {
+"RESET": SubResource("Animation_kkajj"),
+"flame_out": SubResource("Animation_0p5ra")
+}
+
+[node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_t0qeu")
+
+[node name="Sprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.4, 0.4)
+sprite_frames = SubResource("SpriteFrames_avoh7")
+animation = &"right"
+autoplay = "down"
+
+[node name="Hitbox" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_xh18n")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+scale = Vector2(2, 2)
+color = Color(0.690989, 0.352422, 3.85046e-07, 1)
+energy = 3.0
+blend_mode = 2
+shadow_enabled = true
+texture = ExtResource("3_f88wp")
+
+[node name="OilTimer" type="Timer" parent="."]
+autostart = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_t6b4l")
+}
+
+[node name="HitSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_cudna")
+max_polyphony = 50
+
+[node name="Pulses" type="Node" parent="."]
+
+[node name="ConeTimer" type="Timer" parent="."]
+wait_time = 0.3
+
+[node name="Cone" type="Node2D" parent="."]
+rotation = -1.5708
+
+[node name="ConeLight" type="PointLight2D" parent="Cone"]
+position = Vector2(0, 600)
+scale = Vector2(6, 24)
+enabled = false
+color = Color(1, 0.6, 0.4, 1)
+shadow_enabled = true
+texture = ExtResource("5_7nsk8")
+
+[node name="Area2D" type="Area2D" parent="Cone/ConeLight"]
+
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="Cone/ConeLight/Area2D"]
+polygon = PackedVector2Array(0.166667, -25.0417, -24.6667, 25, 24.5, 25)
+
+[connection signal="lantern_pulse" from="." to="." method="_on_lantern_pulse"]
+[connection signal="timeout" from="OilTimer" to="." method="_on_oil_timer_timeout"]
+[connection signal="timeout" from="ConeTimer" to="." method="_on_cone_timer_timeout"]

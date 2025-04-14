@@ -1,0 +1,31 @@
+[gd_scene load_steps=6 format=3 uid="uid://k0rlju4na2da"]
+
+[ext_resource type="Texture2D" uid="uid://pokcuuvd2sxe" path="res://Assets/Sprites/pulsegradient.png" id="1_57tsm"]
+[ext_resource type="Script" path="res://Scripts/heart.gd" id="1_eb4ke"]
+[ext_resource type="Texture2D" uid="uid://biaos0qt8fum7" path="res://Assets/Sprites/heart.png" id="2_4anl2"]
+[ext_resource type="AudioStream" uid="uid://dwroygmd0n1xp" path="res://Assets/Sounds/02_Heal_02.wav" id="4_34tk7"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_g8jow"]
+radius = 75.0
+
+[node name="heart" type="Node2D"]
+script = ExtResource("1_eb4ke")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+scale = Vector2(2.5, 2.5)
+texture = ExtResource("1_57tsm")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(4, 4)
+texture = ExtResource("2_4anl2")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_g8jow")
+
+[node name="heart_sound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_34tk7")
+max_polyphony = 5
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

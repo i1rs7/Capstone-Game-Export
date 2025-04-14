@@ -1,0 +1,48 @@
+[gd_scene load_steps=7 format=3 uid="uid://crvr4t64khjk6"]
+
+[ext_resource type="Script" path="res://Scripts/level.gd" id="1_4kqvw"]
+[ext_resource type="PackedScene" uid="uid://c6u6lt7xce26a" path="res://Scenes/player.tscn" id="1_frw4y"]
+[ext_resource type="Texture2D" uid="uid://bi0veih7vkgj2" path="res://Assets/Sprites/Dungeon_brick_wall_grey.png.png" id="1_xjmqx"]
+[ext_resource type="PackedScene" uid="uid://l3sbtgxku847" path="res://Scenes/ui.tscn" id="3_juxmo"]
+[ext_resource type="AudioStream" uid="uid://cc1f3hxtf12q3" path="res://Assets/Sounds/backgroundMusic.mp3" id="6_42vie"]
+[ext_resource type="Script" path="res://Scripts/WaveManager.gd" id="6_ct2bb"]
+
+[node name="Level" type="Node2D"]
+script = ExtResource("1_4kqvw")
+
+[node name="BG" type="Sprite2D" parent="."]
+texture_repeat = 2
+texture = ExtResource("1_xjmqx")
+region_enabled = true
+region_rect = Rect2(-90723.5, -56848.7, 169198, 96920.4)
+
+[node name="Player" parent="." instance=ExtResource("1_frw4y")]
+unique_name_in_owner = true
+position = Vector2(608, 337)
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+zoom = Vector2(0.5, 0.5)
+position_smoothing_enabled = true
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color(0.0392157, 0.0392157, 0.0392157, 1)
+
+[node name="UI" parent="." instance=ExtResource("3_juxmo")]
+
+[node name="Oils" type="Node" parent="."]
+
+[node name="Hearts" type="Node" parent="."]
+
+[node name="Enemies" type="Node" parent="."]
+
+[node name="WaveManager" type="Node" parent="."]
+script = ExtResource("6_ct2bb")
+
+[node name="CalmTimer" type="Timer" parent="WaveManager"]
+wait_time = 3.0
+one_shot = true
+
+[node name="BackgroundMusic" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_42vie")
+
+[connection signal="timeout" from="WaveManager/CalmTimer" to="WaveManager" method="_on_calm_timer_timeout"]

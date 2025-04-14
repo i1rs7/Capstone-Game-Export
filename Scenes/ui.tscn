@@ -1,0 +1,94 @@
+[gd_scene load_steps=8 format=3 uid="uid://l3sbtgxku847"]
+
+[ext_resource type="Script" path="res://Scripts/ui.gd" id="1_v6tqu"]
+[ext_resource type="Texture2D" uid="uid://se8g2ptfsvym" path="res://icon.svg" id="2_32l27"]
+[ext_resource type="FontFile" uid="uid://chqhosqiiwk5" path="res://Assets/Fonts/Minecraft.ttf" id="2_ikr5m"]
+[ext_resource type="Texture2D" uid="uid://d02ocjbjgift3" path="res://Assets/Sprites/oil_progress.png" id="3_amtcq"]
+[ext_resource type="Texture2D" uid="uid://biaos0qt8fum7" path="res://Assets/Sprites/heart.png" id="4_puw16"]
+[ext_resource type="Texture2D" uid="uid://cahir0xigdglw" path="res://Assets/Sprites/health_progress.png" id="5_nj8n0"]
+[ext_resource type="FontFile" uid="uid://dui4y5a6nm4m8" path="res://Assets/Fonts/BLKCHCRY.TTF" id="7_bi0sh"]
+
+[node name="UI" type="CanvasLayer"]
+script = ExtResource("1_v6tqu")
+metadata/_edit_use_anchors_ = true
+
+[node name="UI" type="Control" parent="."]
+layout_mode = 3
+anchor_left = 0.0173611
+anchor_top = 0.0277778
+anchor_right = 0.0520833
+anchor_bottom = 0.0895062
+scale = Vector2(1.5, 1.5)
+metadata/_edit_use_anchors_ = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI"]
+layout_mode = 0
+offset_left = 24.0
+offset_top = -2.0
+offset_right = 149.0
+offset_bottom = 38.0
+metadata/_edit_use_anchors_ = true
+
+[node name="WaveLabel" type="Label" parent="UI/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_ikr5m")
+theme_override_font_sizes/font_size = 32
+text = "Wave:"
+
+[node name="WaveProgLabel" type="Label" parent="UI/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_ikr5m")
+theme_override_font_sizes/font_size = 32
+text = "Enemies Left:"
+
+[node name="Health" type="HBoxContainer" parent="UI/VBoxContainer"]
+layout_mode = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="UI/VBoxContainer/Health"]
+position = Vector2(-19.3333, 14)
+texture = ExtResource("4_puw16")
+
+[node name="HealthBar" type="TextureProgressBar" parent="UI/VBoxContainer/Health"]
+layout_mode = 2
+value = 100.0
+texture_progress = ExtResource("5_nj8n0")
+
+[node name="HealthNumber" type="Label" parent="UI/VBoxContainer/Health"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_ikr5m")
+theme_override_font_sizes/font_size = 16
+text = "100"
+
+[node name="Oil" type="HBoxContainer" parent="UI/VBoxContainer"]
+layout_mode = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="UI/VBoxContainer/Oil"]
+modulate = Color(0.690196, 0.352941, 0, 1)
+position = Vector2(-18, 14)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("2_32l27")
+
+[node name="OilBar" type="TextureProgressBar" parent="UI/VBoxContainer/Oil"]
+layout_mode = 2
+max_value = 15.0
+value = 15.0
+texture_progress = ExtResource("3_amtcq")
+
+[node name="OilNumber" type="Label" parent="UI/VBoxContainer/Oil"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_ikr5m")
+theme_override_font_sizes/font_size = 16
+text = "15"
+
+[node name="Instructions" type="Label" parent="UI"]
+offset_left = 371.333
+offset_top = 10.6667
+offset_right = 737.333
+offset_bottom = 94.6667
+theme_override_fonts/font = ExtResource("7_bi0sh")
+theme_override_font_sizes/font_size = 20
+text = "left click to conelight kill (-0.5 oil)
+right click to boost conelight kill (-1 oil)
+space to kill all visible  (-30 oil)
+"
+horizontal_alignment = 2

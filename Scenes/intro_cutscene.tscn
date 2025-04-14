@@ -1,0 +1,287 @@
+[gd_scene load_steps=27 format=3 uid="uid://brkwhepiofk2u"]
+
+[ext_resource type="Texture2D" uid="uid://bi0veih7vkgj2" path="res://Assets/Sprites/Dungeon_brick_wall_grey.png.png" id="1_3757c"]
+[ext_resource type="Script" path="res://Scripts/intro_cutscene.gd" id="1_onikv"]
+[ext_resource type="Texture2D" uid="uid://1bo37djk5pm6" path="res://Assets/Sprites/cutscene_fall.png" id="2_aoxr2"]
+[ext_resource type="Texture2D" uid="uid://dc05t83imj04q" path="res://Assets/Sprites/cutscenebg.JPG" id="3_1itav"]
+[ext_resource type="Texture2D" uid="uid://b0x36806s34k5" path="res://Assets/Sprites/cutscene_walk.png" id="3_mlrhs"]
+[ext_resource type="Texture2D" uid="uid://b134fmlltmnew" path="res://Assets/Sprites/circle.png" id="4_c121r"]
+[ext_resource type="Texture2D" uid="uid://d02ocjbjgift3" path="res://Assets/Sprites/oil_progress.png" id="4_ma6mf"]
+[ext_resource type="Texture2D" uid="uid://btew37d8643ao" path="res://Assets/Sprites/white.png" id="7_dlq8c"]
+[ext_resource type="AudioStream" uid="uid://b6ni1mbmnd32g" path="res://Assets/Sounds/playerscream.mp3" id="9_5ijel"]
+[ext_resource type="AudioStream" uid="uid://ccxdip6eulmst" path="res://Assets/Sounds/rain-sound-307165.mp3" id="10_hqj14"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5gfat"]
+size = Vector2(120, 28)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ri23p"]
+size = Vector2(2939.62, 1836.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jmcyt"]
+size = Vector2(366, 545)
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_n5ww7"]
+blend_mode = 1
+light_mode = 1
+
+[sub_resource type="GDScript" id="GDScript_ddjy0"]
+resource_name = "cutscene_player"
+script/source = "extends CharacterBody2D
+@onready var walking: AnimatedSprite2D = $Walking
+@onready var falling: AnimatedSprite2D = $Falling
+@onready var collision_shape_2d: CollisionShape2D = $\"../Collisions/CollisionShape2D\"
+@onready var scream: AudioStreamPlayer2D = $scream
+
+var direction
+var SPEED = 300.0
+const JUMP_VELOCITY = -600.0
+
+func _ready():
+	falling.hide()
+	
+	
+func _physics_process(delta: float) -> void:
+	# Add the gravity.
+	if not is_on_floor():
+		velocity += get_gravity() * delta
+
+
+	# Get the input direction and handle the movement/deceleration.
+	# As good practice, you should replace UI actions with custom gameplay actions.
+	direction = Input.get_axis(\"Left\", \"Right\")
+	if direction:
+		velocity.x = direction * SPEED
+	else:
+		velocity.x = move_toward(velocity.x, 0, SPEED)
+	
+	move_and_slide()
+	
+	if direction > 0:
+		walking.play()
+		walking.flip_h = false
+	elif direction <0:
+		walking.flip_h = true
+		walking.play()
+	else:
+		walking.pause()
+
+
+func _on_area_2d_body_entered(body: Node2D) -> void:
+	scream.play()
+	walking.hide()
+	falling.show()
+	falling.play()
+"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_plawl"]
+atlas = ExtResource("2_aoxr2")
+region = Rect2(0, 140, 153, 210)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tmgr4"]
+atlas = ExtResource("2_aoxr2")
+region = Rect2(153, 140, 153, 210)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_smruf"]
+atlas = ExtResource("2_aoxr2")
+region = Rect2(306, 140, 153, 210)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hxotd"]
+atlas = ExtResource("2_aoxr2")
+region = Rect2(459, 140, 153, 210)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7iqub"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_plawl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tmgr4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_smruf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hxotd")
+}],
+"loop": false,
+"name": &"fall",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bk7ao"]
+size = Vector2(14, 138)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0rfew"]
+atlas = ExtResource("3_mlrhs")
+region = Rect2(0, 0, 384, 1024)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fs4ug"]
+atlas = ExtResource("3_mlrhs")
+region = Rect2(384, 0, 384, 1024)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s5bon"]
+atlas = ExtResource("3_mlrhs")
+region = Rect2(768, 0, 384, 1024)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2x3cw"]
+atlas = ExtResource("3_mlrhs")
+region = Rect2(1152, 0, 384, 1024)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_blwyt"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0rfew")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fs4ug")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s5bon")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2x3cw")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="IntroCutscene" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_onikv")
+
+[node name="BG" type="Sprite2D" parent="."]
+texture_repeat = 2
+position = Vector2(-14270, -2366)
+texture = ExtResource("1_3757c")
+region_enabled = true
+region_rect = Rect2(-90723.5, -56848.7, 169198, 96920.4)
+
+[node name="Background" type="StaticBody2D" parent="."]
+
+[node name="Sprite2D3" type="Sprite2D" parent="Background"]
+position = Vector2(747, 43)
+scale = Vector2(0.595596, 0.582222)
+texture = ExtResource("3_1itav")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Background"]
+position = Vector2(-226, 45)
+scale = Vector2(0.595596, 0.582222)
+texture = ExtResource("3_1itav")
+
+[node name="Sprite2D4" type="Sprite2D" parent="Background"]
+position = Vector2(-1168, 47)
+scale = Vector2(0.595596, 0.582222)
+texture = ExtResource("3_1itav")
+
+[node name="DungeonFloor" type="StaticBody2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="DungeonFloor"]
+self_modulate = Color(0, 0, 0, 1)
+position = Vector2(-1113.69, 919)
+scale = Vector2(23.067, 46.8667)
+texture = ExtResource("4_ma6mf")
+
+[node name="Sprite2D4" type="Sprite2D" parent="DungeonFloor"]
+self_modulate = Color(0, 0, 0, 1)
+position = Vector2(522, 352)
+scale = Vector2(23.035, 8.73333)
+texture = ExtResource("4_ma6mf")
+
+[node name="Sprite2D2" type="Sprite2D" parent="DungeonFloor"]
+self_modulate = Color(0, 0, 0, 1)
+position = Vector2(1924, 936)
+scale = Vector2(23.035, 46.8667)
+texture = ExtResource("4_ma6mf")
+
+[node name="Sprite2D3" type="Sprite2D" parent="DungeonFloor"]
+self_modulate = Color(0, 0, 0, 1)
+position = Vector2(486.156, 2140)
+scale = Vector2(52.5575, 7.66666)
+texture = ExtResource("4_ma6mf")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(397, 230)
+shape = SubResource("RectangleShape2D_5gfat")
+
+[node name="Collisions" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Collisions"]
+position = Vector2(-1134, 1144)
+shape = SubResource("RectangleShape2D_ri23p")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Collisions"]
+position = Vector2(1927.81, 1135)
+shape = SubResource("RectangleShape2D_ri23p")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Collisions"]
+position = Vector2(-554, 31)
+shape = SubResource("RectangleShape2D_jmcyt")
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color(0.0392157, 0.0392157, 0.0392157, 1)
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(401.5, 1167)
+scale = Vector2(0.611111, 6.12821)
+color = Color(0.690989, 0.352422, 3.85046e-07, 1)
+energy = 5.0
+blend_mode = 2
+shadow_enabled = true
+texture = ExtResource("4_c121r")
+texture_scale = 0.5
+
+[node name="PointLight2D2" type="PointLight2D" parent="."]
+position = Vector2(-98.9999, -6.99998)
+scale = Vector2(32.3333, 17.2308)
+texture = ExtResource("7_dlq8c")
+
+[node name="Player" type="CharacterBody2D" parent="."]
+material = SubResource("CanvasItemMaterial_n5ww7")
+position = Vector2(-7, -56)
+script = SubResource("GDScript_ddjy0")
+
+[node name="Falling" type="AnimatedSprite2D" parent="Player"]
+position = Vector2(29.9691, 210.4)
+scale = Vector2(0.770838, 0.67294)
+sprite_frames = SubResource("SpriteFrames_7iqub")
+animation = &"fall"
+frame = 3
+frame_progress = 1.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+position = Vector2(53, 211.4)
+shape = SubResource("RectangleShape2D_bk7ao")
+
+[node name="Walking" type="AnimatedSprite2D" parent="Player"]
+position = Vector2(23.9691, 205.4)
+scale = Vector2(0.2, 0.2)
+sprite_frames = SubResource("SpriteFrames_blwyt")
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+position = Vector2(23.4, 104.4)
+scale = Vector2(0.695312, 0.490234)
+zoom = Vector2(1.2, 1.2)
+limit_left = -600
+limit_right = 800
+limit_bottom = 1750
+
+[node name="scream" type="AudioStreamPlayer2D" parent="Player"]
+stream = ExtResource("9_5ijel")
+volume_db = 10.0
+
+[node name="rain" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("10_hqj14")
+volume_db = -5.0
+autoplay = true
+
+[connection signal="body_entered" from="Area2D" to="Player" method="_on_area_2d_body_entered"]
